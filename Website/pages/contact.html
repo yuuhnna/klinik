@@ -1,0 +1,137 @@
+<section id="contact">
+  <div class="contact-page">
+
+    <!-- Title -->
+    <div id="title">
+      <h1>
+        <span class="text-gradient">CONTACT &amp; REVIEW US</span>
+      </h1>
+    </div>
+
+    <!-- Main Contact Box -->
+    <div class="contact-box">
+
+      <!-- Left: Review Form -->
+      <div class="form-section">
+        <div class="form-header">
+          <h2>REVIEW US</h2>
+          <img src="../images/icons/messaging.png" alt="Messaging" class="msg-icon">
+        </div>
+        <form class="review-form">
+          <!-- Name + Email -->
+          <div class="form-row">
+            <input type="text" placeholder="YOUR NAME" class="form-input" required>
+            <input type="email" placeholder="EMAIL ADDRESS" class="form-input" required>
+          </div>
+
+          <!-- Phone + Rating -->
+          <div class="form-row">
+            <input type="tel" placeholder="PHONE" class="form-input phone-input" required>
+            <div class="rating-group">
+              <label class="rating-label">RATE OUR SERVICE</label>
+              <div class="stars" id="star-rating">
+                <span class="star" data-value="1">★</span>
+                <span class="star" data-value="2">★</span>
+                <span class="star" data-value="3">★</span>
+                <span class="star" data-value="4">★</span>
+                <span class="star" data-value="5">★</span>
+              </div>
+              <input type="hidden" id="rating-value" name="rating" value="0">
+            </div>
+          </div>
+
+          <!-- Message Row with Floating Telegram Button -->
+          <div class="message-row-wrapper">
+            <div class="message-row">
+              <textarea placeholder="MESSAGE" class="form-textarea" rows="5" required></textarea>
+            </div>
+            <!-- Send Button -->
+            <button type="submit" class="telegram-button">
+              <img src="../images/icons/telegram.png" alt="Send" class="telegram-icon-btn">
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Right: Contact Information -->
+      <div class="info-section">
+        <h2>CONTACT INFORMATION</h2>
+        <div class="contact-info">
+          <div class="info-item">
+            <img src="../images/icons/location.png" alt="Location" class="info-icon">
+            <a href="https://maps.app.goo.gl/B3b3vfzQohbS6Vxu5" target="_blank" class="info-link">2nd Floor JSPL Arcade,
+              New Poblacion, Buenavista, Guimaras</a>
+          </div>
+
+          <div class="info-item">
+            <img src="../images/icons/phone.png" alt="Phone" class="info-icon">
+            <a href="tel:09776933994" class="info-link">0977 693 3994</a>
+          </div>
+
+          <div class="info-item">
+            <img src="../images/icons/gmail.png" alt="Email" class="info-icon">
+            <a href="mailto:centrihealth_lab@yahoo.com" class="info-link">centrihealth_lab@yahoo.com</a>
+          </div>
+
+          <div class="info-item">
+            <img src="../images/icons/facebook.png" alt="Facebook" class="info-icon">
+            <a href="https://www.facebook.com/centrihealthlab" target="_blank" class="info-link">Centrihealth
+              Laboratory</a>
+          </div>
+        </div>
+      </div>
+
+    </div> <!-- closes contact-box -->
+
+    <!-- Footer Section -->
+    <div class="extra-content">
+
+      <!-- Left: Logo + Company Info -->
+      <div class="extra-left">
+        <div class="company-header">
+          <img src="../images/logos/laboratory_logo.png" alt="Lab Logo" class="company-logo">
+          <h2 class="company-name">Centrihealth Laboratory Co.</h2>
+        </div>
+        <hr class="divider">
+        <p class="company-description">
+          Trusted laboratory services for the Buenavista community, delivering accuracy and care.
+        </p>
+      </div>
+
+      <!-- Right: Sitemap + Back to Top -->
+      <div class="extra-right">
+        <div class="sitemap-section">
+          <nav class="sitemap">
+            <a href="https://maps.app.goo.gl/B3b3vfzQohbS6Vxu5" target="_blank">SITEMAP</a>
+            <a href="#home">HOME</a>
+            <a href="#services">SERVICES</a>
+            <a href="#offers">OFFERS &amp; SCHEDULES</a>
+            <a href="#about">ABOUT US</a>
+            <a href="#contact">CONTACT US</a>
+          </nav>
+        </div>
+        <button class="back-to-top">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="17 11 12 6 7 11"></polyline>
+            <polyline points="17 18 12 13 7 18"></polyline>
+          </svg>
+          BACK TO TOP
+        </button>
+      </div>
+
+    </div> <!-- closes extra-content -->
+
+  </div> <!-- closes contact-page -->
+
+  <!-- ===== CUSTOM MODAL ===== -->
+  <div id="contact-modal" class="modal-overlay">
+    <div class="modal-card">
+      <div class="modal-icon" id="modal-icon"></div>
+      <h3 class="modal-title" id="modal-title"></h3>
+      <p class="modal-message" id="modal-message"></p>
+      <button class="modal-btn" id="modal-close-btn">OK</button>
+    </div>
+  </div>
+
+</section>

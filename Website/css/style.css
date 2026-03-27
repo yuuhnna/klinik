@@ -781,8 +781,9 @@ section {
     .offers-page #title h1 {
         font-size: 1.6rem;
     }
-    
-    #discount, #cardbank {
+
+    #discount,
+    #cardbank {
         padding: 15px 10px;
         min-height: 380px;
         border-radius: 12px;
@@ -1347,15 +1348,16 @@ section {
 
 /* ---------- RESPONSIVE ---------- */
 @media (max-width: 768px) {
+
     /* --- Offers Page Mobile Fixes --- */
     #offers {
         padding: 50px 15px 30px;
     }
-    
+
     #discount .pct {
         font-size: 3.5rem;
     }
-    
+
     #discount .word-discount,
     #discount h1:nth-of-type(2) {
         font-size: 1.8rem;
@@ -1369,24 +1371,24 @@ section {
         width: 70px;
         height: 70px;
     }
-    
+
     .discount-tags h3.senior img {
         width: 70px;
         height: 70px;
     }
-    
+
     #logos-container {
         align-items: center;
         text-align: center;
     }
-    
+
     #logoLabaratory,
     #logoMedicalSevices,
     #logoPharmacy {
         flex-direction: column;
         gap: 10px;
     }
-    
+
     /* --- About / Org Chart Mobile --- */
     #about .container {
         padding: 50px 15px 40px;
@@ -1439,13 +1441,15 @@ section {
         width: 32px;
         height: 32px;
     }
+
     .arrow-left {
         left: 0px;
     }
+
     .arrow-right {
         right: 0px;
     }
-    
+
     .carousel-dots {
         margin-top: 35px;
     }
@@ -2280,4 +2284,772 @@ details[open] .category-header::after {
 #submitNo:hover { background: #aaa; }
 
 
+/* ================================
+   CONTACT PAGE STYLES
+   ================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background: #f0f7f4;
+    scroll-behavior: smooth;
+}
+
+/* ---------- CONTACT SECTION ---------- */
+#contact {
+    background: linear-gradient(to bottom, #f0f7f4, #e8f3f0);
+    padding: 60px 40px 40px;
+    min-height: 100vh;
+}
+
+.contact-page {
+    max-width: 1200px;
+    /* Expand out past the 950px contact card */
+    margin: 0 auto;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* ---------- TITLE ---------- */
+#title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+#title h1 {
+    font-size: 2.2rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.text-gradient {
+    background: linear-gradient(100deg, #359D9E 0%, #2F8A8B 30%, #133838 78%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ---------- MAIN CONTACT BOX ---------- */
+.contact-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    background: linear-gradient(90deg, #7CE495 0%, #359D9E 100%);
+    border-radius: 20px;
+    padding: 40px 40px 20px 40px;
+    /* Reduced height */
+    align-items: start;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 1);
+    max-width: 950px;
+    margin: 0 auto 50px auto;
+    /* Slightly more space under card */
+}
+
+/* ---------- FORM SECTION ---------- */
+.form-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-bottom: 20px;
+}
+
+.msg-icon {
+    width: 100px;
+    /* Increased size */
+    height: 60px;
+    object-fit: contain;
+}
+
+.form-header h2,
+.info-section h2 {
+    font-size: 1.4rem;
+    /* Increased size */
+    font-weight: 600;
+    /* Reduced boldness */
+    color: #000;
+    letter-spacing: 1.2px;
+    margin: 0;
+}
+
+/* ---------- FORM INPUTS ---------- */
+.review-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    align-items: flex-end;
+    /* Align phone input squarely with the bottom of rating block */
+}
+
+.form-input,
+.form-textarea {
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 2px solid #359D9E;
+    background: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #133838;
+    transition: all 0.3s ease;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+    color: #999;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+    outline: none;
+    background: #fff;
+    border-color: #2F8A8B;
+    box-shadow: 0 0 0 3px rgba(53, 157, 158, 0.1);
+}
+
+/* ---------- RATING GROUP ---------- */
+.rating-group {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    /* reduced space between title and stars */
+}
+
+.rating-label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #133838;
+    text-transform: uppercase;
+}
+
+.stars {
+    display: flex;
+    gap: 8px;
+}
+
+.star {
+    font-size: 1.8rem;
+    color: transparent;
+    -webkit-text-stroke: 1.5px #000;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.star:hover {
+    transform: scale(1.15);
+    color: #000;
+}
+
+.star.active {
+    color: #000;
+    -webkit-text-stroke: 1.5px #000;
+    text-shadow: none;
+}
+
+/* ---------- MESSAGE + TELEGRAM BUTTON ---------- */
+.message-row-wrapper {
+    display: flex;
+    align-items: center;
+    /* centers textarea + button vertically */
+    gap: 20px;
+}
+
+.message-row {
+    flex: 1;
+    /* allows textarea to expand fully */
+    display: flex;
+}
+
+.message-row .form-textarea {
+    flex: 1;
+    /* forces textarea to stretch */
+    min-height: 90px;
+    /* Reduced min-height to reduce whole card height */
+    resize: none;
+    margin: 0;
+}
+
+.telegram-button {
+    flex-shrink: 0;
+    /* prevents shrinking */
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    /* centers vertically */
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.telegram-button:hover {
+    transform: scale(1.1);
+}
+
+.telegram-button:active {
+    transform: scale(0.95);
+}
+
+.telegram-icon-btn {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.15));
+}
+
+.info-section {
+    display: flex;
+    flex-direction: column;
+    gap: 42px;
+    /* Increased size between contact info title and location */
+    padding-left: 40px;
+    padding-top: 0;
+}
+
+
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    /* Reduced gap between info items slightly */
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    /* keeps icon + text aligned */
+    gap: 24px;
+    /* increased spacing between icon and text */
+    font-size: 1rem;
+    color: #133838;
+    line-height: 1.6;
+}
+
+.info-item span {
+    display: block;
+    /* ensures text flows nicely */
+}
+
+.info-link {
+    color: #133838;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.info-link:hover {
+    color: #000;
+    text-decoration: underline;
+}
+
+.info-icon {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+/* Enlarge specific icons to match the optical size of the phone icon */
+.info-icon[alt="Location"],
+.info-icon[alt="Email"],
+.info-icon[alt="Facebook"] {
+    transform: scale(1.25);
+}
+
+.info-icon[alt="Phone"] {
+    transform: scale(0.85);
+    /* Reduced size per request */
+}
+
+/* ---------- FOOTER SECTION ---------- */
+.extra-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    padding: 30px 0;
+    border-top: none;
+}
+
+/* Left side */
+.extra-left {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    /* Center logo and text relative to each other */
+    text-align: center;
+    padding-left: 0;
+    width: max-content;
+    /* Hug contents so the stack pins nicely to the left side */
+}
+
+.company-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+
+.company-logo {
+    width: 90px;
+    /* Increased */
+    height: 90px;
+    /* Increased */
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: none;
+    /* Omit white outline/shadow */
+    background: transparent;
+}
+
+.company-name {
+    font-size: 1.3rem;
+    /* Increased font-size */
+    font-weight: 700;
+    color: #133838;
+}
+
+.divider {
+    display: none;
+    /* Omit the line under logo */
+}
+
+.company-description {
+    font-size: 0.95rem;
+    color: #2d5a5a;
+    line-height: 1.7;
+    max-width: 440px;
+    margin: 0;
+    text-align: center;
+    /* Ensures the two lines perfectly center under the logo */
+}
+
+.extra-right {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 60px;
+    width: 100%;
+}
+
+.sitemap {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 12px 24px;
+}
+
+.sitemap-row {
+    display: flex;
+    gap: 16px;
+    /* spacing between ABOUT US and CONTACT US */
+}
+
+.sitemap a {
+    font-size: 0.75rem;
+    text-decoration: none;
+    color: #133838;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+    letter-spacing: 0.5px;
+}
+
+.sitemap a:hover {
+    color: #359D9E;
+}
+
+
+.back-to-top {
+    padding: 12px 24px;
+    background: linear-gradient(100deg, #4f9689 0%, #29605e 100%);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1000;
+    pointer-events: auto;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-left: auto;
+    /* Push just the button to the right if needed, but flex-start+gap looks better. We will leave it auto so it aligns right of nav */
+}
+
+.back-to-top:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(53, 157, 158, 0.4);
+}
+
+/* ---------- RESPONSIVE DESIGN ---------- */
+@media (max-width: 768px) {
+    #contact {
+        padding: 40px 20px 30px;
+    }
+
+    #title h1 {
+        font-size: 2rem;
+    }
+
+    .contact-box {
+        grid-template-columns: 1fr;
+        gap: 50px;
+        padding: 50px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .telegram-icon-btn {
+        width: 45px;
+        height: 45px;
+    }
+
+    /* ---------- RESPONSIVE FOOTER ---------- */
+    .extra-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 30px 0;
+    }
+
+    .extra-right {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .sitemap a {
+        font-size: 0.85rem;
+    }
+
+    .back-to-top {
+        font-size: 0.85rem;
+        padding: 8px 16px;
+    }
+
+    /* ---------- RESPONSIVE TEXT ---------- */
+    .form-header h2,
+    .info-section h2 {
+        font-size: 1.1rem;
+    }
+
+    .company-name {
+        font-size: 1rem;
+    }
+
+    .company-description {
+        font-size: 0.9rem;
+    }
+
+    /* ---------- SMALLER SCREENS ---------- */
+    @media (max-width: 480px) {
+        #contact {
+            padding: 30px 16px 20px;
+        }
+
+        #title h1 {
+            font-size: 1.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-box {
+            padding: 20px;
+            gap: 20px;
+        }
+
+        .form-input,
+        .form-textarea {
+            font-size: 0.85rem;
+            padding: 10px 12px;
+        }
+
+        .message-row .form-textarea {
+            min-height: 100px;
+        }
+
+        .telegram-icon-btn {
+            width: 40px;
+            height: 40px;
+        }
+
+        /* CONTACT INFO ITEMS */
+        .info-item {
+            display: flex;
+            flex-direction: column;
+            /* stack label + value */
+            gap: 4px;
+            font-size: 0.95rem;
+            color: #133838;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .info-item strong {
+            font-weight: 700;
+            color: #2F8A8B;
+            /* highlight labels */
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+        }
+
+        .info-item span {
+            font-weight: 500;
+            color: #133838;
+        }
+
+        .company-logo {
+            width: 60px;
+            height: 60px;
+        }
+
+        .extra-content {
+            gap: 20px;
+        }
+
+        .extra-right {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .back-to-top {
+            align-self: flex-start;
+            margin-left: 0;
+        }
+
+        .msg-icon {
+            width: 32px;
+            height: 32px;
+            margin-left: 8px;
+        }
+
+        .star {
+            font-size: 1.8rem;
+            color: #ccc;
+            /* outline look */
+        }
+
+        .star.active {
+            color: #359D9E;
+        }
+
+    }
+}
+
+
+/* ================================
+   CUSTOM CONTACT MODAL
+   ================================ */
+
+.modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 40, 35, 0.55);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    animation: modalFadeIn 0.25s ease forwards;
+}
+
+.modal-overlay.show {
+    display: flex;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.modal-card {
+    background: linear-gradient(145deg, #ffffff 0%, #eaf7f4 100%);
+    border-radius: 20px;
+    padding: 40px 36px 32px;
+    max-width: 420px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(14, 66, 70, 0.35);
+    animation: modalSlideUp 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    position: relative;
+    overflow: hidden;
+    border: 3px solid #55C595;
+    outline: 2px solid #359D9E;
+    outline-offset: -1px;
+}
+
+
+@keyframes modalSlideUp {
+    from {
+        transform: translateY(30px) scale(0.96);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+.modal-icon {
+    font-size: 3.2rem;
+    margin-bottom: 14px;
+    line-height: 1;
+}
+
+.modal-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 1.25rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #133838;
+    margin-bottom: 10px;
+}
+
+.modal-message {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.95rem;
+    color: #2d5a5a;
+    line-height: 1.6;
+    margin-bottom: 28px;
+}
+
+.modal-btn {
+    background: linear-gradient(100deg, #55C595 0%, #359D9E 100%);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 48px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 14px rgba(53, 157, 158, 0.4);
+}
+
+.modal-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(53, 157, 158, 0.5);
+}
+
+.modal-btn:active {
+    transform: translateY(0) scale(0.97);
+}
+
+/* ---------- FOOTER ---------- */
+.site-footer {
+    background: linear-gradient(100deg, #55C595 0%, #359D9E 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px 12px 20px;
+    box-shadow: 0 -4px 15px rgba(14, 46, 36, 0.1);
+    position: relative;
+    z-index: 1000;
+}
+
+.footer-icons {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 2px;
+}
+
+.footer-icon {
+    color: #000;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-icon:hover {
+    transform: translateY(-3px);
+    opacity: 0.75;
+}
+
+.footer-icon img {
+    height: 32px;
+    width: auto;
+    display: block;
+}
+
+.footer-icon svg {
+    width: 28px;
+    height: 28px;
+    display: block;
+}
+
+.footer-text {
+    text-align: center;
+    color: #000;
+    font-family: 'Open Sans', sans-serif;
+    margin-top: 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+}
+
+.footer-brand {
+    font-weight: 500;
+    font-size: 14px;
+    color: #000;
+}
+
+.footer-copyright {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+
+.footer-copyright img {
+    height: 14px;
+    width: auto;
+    display: block;
+}
+
+.footer-copyright span {
+    color: #000;
+    font-size: 13px;
+}
 
