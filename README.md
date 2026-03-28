@@ -13,7 +13,7 @@ Welcome to the **Klinik** project repository! This is a modern, responsive websi
 
 This project is built using:
 - **HTML5**: For structured and semantic web content.
-- **Vanilla CSS**: For custom, premium styling and responsive layouts.
+- **CSS**: For custom, premium styling and responsive layouts.
 - **JavaScript**: For dynamic interactions and service scheduling logic.
 
 ## 📂 Project Structure
