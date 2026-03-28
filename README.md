@@ -16,6 +16,11 @@ This project is built using:
 - **CSS**: For custom, premium styling and responsive layouts.
 - **JavaScript**: For dynamic interactions and service scheduling logic.
 
+## 📅 Development Timeline
+
+- **Started**: March 15, 2026
+- **Finished**: March 27, 2026
+
 ## 📂 Project Structure
 
 The project is organized as follows:
