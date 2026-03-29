@@ -1,29 +1,27 @@
-# 🏥 Klinik - CentriHealth Laboratory Co. 🧬
+# Klinik Website Project - Centrihealth Laboratory Co.
 
-Welcome to the **Klinik** project repository! This is the official website for **CentriHealth Laboratory Co.**, featuring a modern, responsive design and seamless integration for scheduling **home services**.
+This project is the official website developed for **Centrihealth Laboratory Co.** It provides a modern and responsive platform for patients to learn about laboratory services, view clinical schedules, and book home-based medical testing.
 
-## 🚀 Overview
+## Project Features
 
-**Klinik** is the digital presence of **CentriHealth Laboratory Co.**, aiming to bridge the gap between healthcare providers and patients by offering both in-clinic and home-based services. The platform provides:
-- 🏢 **Comprehensive Clinic Information**: Learn about our services and expertise.
-- 🏠 **Home Service Scheduling**: Book professional healthcare services from the comfort of your home.
-- 📱 **Responsive Design**: A user-friendly experience across all devices.
+This website was built as a single-page application (SPA) using component injection for better maintainability. Key features include:
 
-## 🛠️ Tech Stack
+- **Service Information**: Detailed lists of laboratory tests, pricing, and specialized offers (Senior/PWD/Card Bank).
+- **Home Service Booking**: A comprehensive booking form with dynamic price calculation and validation.
+- **Responsive Layout**: Optimized for both desktop and mobile devices using a custom CSS grid and flexbox system.
+- **Component System**: Modular header, footer, and sections loaded via JavaScript to ensure consistent navigation across the site.
 
-This project is built using:
-- **HTML5**: For structured and semantic web content.
-- **CSS3**: For custom, premium styling and responsive layouts.
-- **JavaScript**: For dynamic interactions and service scheduling logic.
+## Technical Details
 
-## 📅 Development Timeline
+- **Frontend**: HTML5, CSS3, Vanilla JavaScript.
+- **APIs**: Integrated with EmailJS for the contact and review system.
+- **Architecture**: All main sections are loaded dynamically from the `pages/` directory to keep the codebase organized.
 
-- **Started**: March 15, 2026
-- **Finished**: March 27, 2026
+## Project Timeline
+- **Start Date**: February 2025
+- **End Date**: March 2025
 
 ## 📂 Project Structure
-
-The project is organized as follows:
 
 ```text
 klinik/
