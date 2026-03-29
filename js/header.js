@@ -1,10 +1,10 @@
 (function () {
 
-  // -- Detect if we're at root or inside a subfolder --
   const isRoot   = !window.location.pathname.includes('/pages/');
+  // // check folder path
   const basePath = isRoot ? '' : '../';
 
-  // -- Load header component --
+  // load header html
   fetch(basePath + 'pages/header.html')
     .then(res => res.text())
     .then(html => {
@@ -83,6 +83,7 @@
 
       window.addEventListener('scroll', onScroll, { passive: true });
       window.addEventListener('resize', () => requestAnimationFrame(onScroll));
+      // Calculate pill size immediately, and then again after web fonts load to prevent '0 width' line bugs
       requestAnimationFrame(onScroll);
     });
 

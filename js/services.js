@@ -5,6 +5,7 @@
   const basePath = isRoot ? '' : '../';
 
   // -- Load services component --
+  // load services html
   fetch(basePath + 'pages/services.html')
     .then(res => {
       if (!res.ok) throw new Error('HTTP ' + res.status + ' — could not load services component');
@@ -18,6 +19,7 @@
       /* Wait until the first real card has a non-zero offsetWidth
          before running the carousel logic.
          ResizeObserver fires as soon as the element is laid out.    */
+      // wait for cards
       const firstCard = placeholder.querySelector('.service-card');
       if (!firstCard) return;
 
@@ -43,6 +45,7 @@
   /* ==============
       initCarousel
      ============== */
+  // start carousel
   function initCarousel() {
     try {
       const track = document.querySelector('#carouselTrack') || document.querySelector('.carousel-track');
@@ -96,6 +99,7 @@
       let cur = TOTAL;
       let animating = false;
       let timer = null;
+    // get card width
 
       /* Card step width */
       function step() {
@@ -104,11 +108,13 @@
         const mr = parseFloat(getComputedStyle(c).marginRight) || 20;
         return c.offsetWidth + ml + mr;
       }
+    // center card
 
       /* Offset to centre all[index] in the viewport */
       function offsetFor(i) {
         const ml = parseFloat(getComputedStyle(all[i]).marginLeft) || 20;
         return i * step() + ml - (wrapper.offsetWidth / 2 - all[i].offsetWidth / 2);
+    // update dots
       }
 
       /*  Sync active card + dot */
@@ -122,6 +128,7 @@
           dots.forEach((d, i) => d.classList.toggle('active', i === ri));
         }
       }
+    // slide
 
       /* Slide */
       function slideTo(i, animate) {
@@ -132,6 +139,7 @@
         cur = i;
         syncUI();
         if (animate) animating = true;
+    // jump back when needed
       }
 
       /* Seamless jump after clone lands */
@@ -152,6 +160,7 @@
           if (!animating) { slideTo(cur + 1, true); }
         }, 12000);
       }
+    // auto play
 
       /* Arrows */
       if (arrowL) {
@@ -166,6 +175,7 @@
           startTimer(); slideTo(cur + 1, true);
         });
       }
+    // arrows
 
       /* Dots */
       dots.forEach((d, i) => {
@@ -173,14 +183,17 @@
           if (animating) return;
           startTimer(); slideTo(TOTAL + i, true);
         });
+    // dots
       });
 
       /* Resize */
       window.addEventListener('resize', () => slideTo(cur, false));
+    // on resize
 
       /* GO */
       slideTo(TOTAL, false);
       startTimer();
+    // start
 
     } catch (err) {
       console.error('[services.js]', err);

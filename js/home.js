@@ -1,10 +1,10 @@
 (function () {
 
-  // -- Detect if we're at root or inside a subfolder --
   const isRoot   = !window.location.pathname.includes('/pages/');
   const basePath = isRoot ? '' : '../';
 
-  // -- Load home component --
+  // check if we are in main folder
+  // load home html
   fetch(basePath + 'pages/home.html')
     .then(response => response.text())
     .then(data => {
@@ -32,7 +32,7 @@
           item.classList.remove("selected");
         });
 
-        //Close ALL <details> dropdowns
+        // close dropdowns
         document.querySelectorAll(".category-grid details").forEach(detailsEl => {
           detailsEl.removeAttribute("open");
         });
@@ -42,7 +42,7 @@
           opt.classList.remove("selected");
         });
 
-        // Reset all form inputs
+        // reset form
         document.querySelectorAll("#modal input, #modal select, #modal textarea").forEach(field => {
           if (field.type === "checkbox" || field.type === "radio") {
             field.checked = false;
@@ -51,7 +51,7 @@
           }
         });
 
-        // Scroll modal back to top so user starts at beginning
+        // scroll to top
         const modalContent = modal.querySelector(".modal-content");
         if (modalContent) modalContent.scrollTop = 0;
 
@@ -113,7 +113,7 @@
           });
         });
       }
-      //Auto-format contact number with dashes
+      // add dashes to contact number
       const contactNo = document.getElementById("contactNo");
       if (contactNo) {
         contactNo.addEventListener("input", (e) => {
@@ -124,21 +124,21 @@
         });
       }
 
-      // Prevent past dates for Preferred Date
+      // disable past dates for booking
       const preferredDate = document.getElementById("preferredDate");
       if (preferredDate) {
         const today = new Date().toISOString().split("T")[0];
         preferredDate.setAttribute("min", today);
       }
 
-      // Auto-uppercase helper
+      // custom address typed dropdown
       function forceUppercase(field) {
         field.addEventListener("input", (e) => {
           e.target.value = e.target.value.replace(/[^A-Za-z]/g, "").toUpperCase();
         });
       }
 
-      // Apply to all name fields
+      // name fields
       const lastName = document.getElementById("lastName");
       const firstName = document.getElementById("firstName");
       const middleInitial = document.getElementById("middleInitial");
@@ -153,7 +153,7 @@
 
       if (submitBtn) {
         submitBtn.addEventListener("click", () => {
-          // Personal info validation
+          // validate info
           const lastName = document.getElementById("lastName").value.trim();
           const firstName = document.getElementById("firstName").value.trim();
           const mi = document.getElementById("middleInitial").value.trim();
@@ -233,7 +233,6 @@
             if (errorPopup) errorPopup.style.display = "none";
           }
 
-          // Confirmation popup before final submission
           const confirmSubmit = document.createElement("div");
           confirmSubmit.classList.add("confirm-exit");
           confirmSubmit.innerHTML = `
@@ -251,13 +250,14 @@
           document.body.appendChild(confirmSubmit);
 
           document.getElementById("submitYes").addEventListener("click", () => {
-            // Proceed with submission
             const selectedServices = [];
             document.querySelectorAll(".test-item-total").forEach(item => {
               const name = item.querySelector(".test-name-total").textContent.trim();
               const price = item.querySelector(".test-price-total").textContent.trim();
               selectedServices.push({ name, price });
             });
+          // confirm submission
+                // Proceed with submission
 
             const totalAmount = document.querySelector(".total-price").textContent;
 
@@ -277,11 +277,11 @@
         });
       }
 
-      // Event delegation for dropdowns, sub-tests, discounts
+      // click events
       const home = document.querySelector("#home");
       if (home) {
         home.addEventListener("click", (event) => {
-          // Dropdown toggle using <details>
+          // toggle categories
           const summary = event.target.closest('summary');
           if (summary) {
             const currentDetails = summary.parentElement;
@@ -292,7 +292,7 @@
             });
           }
 
-          // Sub-test selection
+          // select test
           const subTest = event.target.closest('.test-item');
           if (subTest && !event.target.classList.contains('remove-btn')) {
             const name = subTest.querySelector('.test-name').textContent.trim();
@@ -320,7 +320,7 @@
             recalculateTotal();
           }
 
-          // Remove test
+          // delete test
           if (event.target.classList.contains("remove-btn")) {
             const removedRow = event.target.closest(".test-item-total");
             const removedName = removedRow.querySelector(".test-name-total").textContent.trim();
@@ -335,7 +335,7 @@
             recalculateTotal();
           }
 
-          // Discount toggle
+          // toggle discounts
           const discountOption = event.target.closest('.discount-option');
           if (discountOption) {
             if (discountOption.classList.contains('selected')) {
@@ -398,11 +398,12 @@
           discountInfo.style.color = "#c00";
           discountInfo.style.marginTop = "4px";
           discountInfo.style.textAlign = "right";
+          // Styling handled by CSS (.discount-info)
           const testListTotalEl = document.querySelector('.test-list-total');
           if (testListTotalEl) testListTotalEl.insertAdjacentElement("afterend", discountInfo);
         }
 
-        // Show discount label if active, otherwise show "No discount applied"
+        // show discount info
         if (discountLabel) {
           discountInfo.textContent = discountLabel;
           discountInfo.style.display = "block";

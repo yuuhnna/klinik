@@ -1,9 +1,9 @@
 (function () {
-  // -- Detect if we're at root or inside a subfolder --
   const isRoot   = !window.location.pathname.includes('/pages/');
+  // // check folder path
   const basePath = isRoot ? '' : '../';
 
-  // -- Load footer component with cache buster to bypass aggressive browser caching --
+  // load footer html
   const cacheBuster = '?t=' + new Date().getTime();
   fetch(basePath + 'pages/footer.html' + cacheBuster, { cache: 'no-store' })
     .then(res => res.text())

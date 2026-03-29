@@ -7,11 +7,11 @@
   </p>
   <button class="btn-home" id="openModal">BOOK HOME SERVICE</button>
 
-  <!-- Modal -->
+  <!-- booking form modal -->
   <div id="modal" class="modal">
     <div class="modal-content">
 
-      <!-- Fixed header -->
+      <!-- header -->
       <div class="modal-header-fixed">
         <h4>Request Form</h4>
         <p class="form-instruction">
@@ -22,7 +22,7 @@
             </div>
       </div>
     
-      <!-- Scrollable body -->
+      <!-- body -->
       <div class="modal-body-scroll">
         
           <label>Name</label>
@@ -33,12 +33,12 @@
             <input type="text" id="suffix" name="suffix" placeholder="Suffix" maxlength="5">
             </div>
 
-          <!-- Other fields row -->
+          <!-- details -->
           <div class="row-fields">
             <div class="field">
               <label for="sex">Sex</label>
               <select id="sex" name="sex" required>
-                <option value="">Select</option>
+                <option value="" disabled selected hidden>Select</option>
                 <option value="Male">MALE</option>
                 <option value="Female">FEMALE</option>
               </select>
@@ -110,7 +110,7 @@
                 <option value="CABUNGAHAN, SAN LORENZO, GUIMARAS">
   </datalist>
 </div>
-    <!-- Preferred Date -->
+    <!-- date -->
     <div class="field">
                 <label for="preferredDate">Preferred Date</label>
                 <input type="date" id="preferredDate" name="preferredDate" required>
@@ -135,6 +135,7 @@
       <div class="test-item"><span class="select-box"></span><span class="test-name">Fecalysis</span><span class="test-price">₱ 100</span></div>
       <div class="test-item"><span class="select-box"></span><span class="test-name">Direct and Concentration</span><span class="test-price">₱ 300</span></div>
       <div class="test-item"><span class="select-box"></span><span class="test-name">Fecal Occult Blood Test</span><span class="test-price">₱ 800</span></div>
+    </div>
   </details>
 
   <!-- Clinical Chemistry -->
@@ -234,7 +235,7 @@
 
 <hr class="form-divider">
 
-<!-- Discount Eligibility -->
+<!-- discounts -->
 <label class="discount-label">
             Discount Eligibility
             <span class="helper-text">— check if Senior Citizen / PWD or Card Bank Member</span>
@@ -263,10 +264,9 @@
               <span class="total-price">₱ 0.00</span>
             </div>
           </div>
-        </form>
-      </div> <!-- end scrollable body -->
+      </div>
 
-      <!-- Fixed footer -->
+      <!-- footer -->
       <div class="modal-footer-fixed">
         <button id="cancelBtn" class="cancel-btn">CANCEL</button>
         <button id="submitBtn" class="submit-btn">SUBMIT</button>
