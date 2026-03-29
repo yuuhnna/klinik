@@ -8,6 +8,6 @@
     .then(res => res.text())
     .then(html => {
       document.getElementById('about-placeholder').innerHTML = html;
-    });
-
+    })
+    .catch(err => console.error('[about.js]', err));
 })();

@@ -1,7 +1,7 @@
 (function () {
 
-  const isRoot   = !window.location.pathname.includes('/pages/');
   // // check folder path
+  const isRoot = !window.location.pathname.includes('/pages/');
   const basePath = isRoot ? '' : '../';
 
   // load header html
@@ -10,12 +10,12 @@
     .then(html => {
       document.getElementById('header-placeholder').innerHTML = html;
 
-      const nav       = document.getElementById('main-nav');
-      const pill      = document.getElementById('nav-pill');
+      const nav = document.getElementById('main-nav');
+      const pill = document.getElementById('nav-pill');
       const hamburger = document.getElementById('hamburger');
-      const links     = [...nav.querySelectorAll('a[data-section]')];
-      const HEADER    = 70;
-      let isClicking  = false;
+      const links = [...nav.querySelectorAll('a[data-section]')];
+      const HEADER = 70;
+      let isClicking = false;
 
       // -- Hamburger toggle --
       hamburger.addEventListener('click', () => {
@@ -43,7 +43,7 @@
       function movePill(link) {
         const nr = nav.getBoundingClientRect();
         const lr = link.getBoundingClientRect();
-        pill.style.left  = (lr.left - nr.left) + 'px';
+        pill.style.left = (lr.left - nr.left) + 'px';
         pill.style.width = lr.width + 'px';
       }
 
@@ -83,8 +83,13 @@
 
       window.addEventListener('scroll', onScroll, { passive: true });
       window.addEventListener('resize', () => requestAnimationFrame(onScroll));
+
       // Calculate pill size immediately, and then again after web fonts load to prevent '0 width' line bugs
       requestAnimationFrame(onScroll);
+      if (document.fonts) {
+        document.fonts.ready.then(onScroll);
+      }
+      setTimeout(onScroll, 400);
     });
 
 })();

@@ -1,9 +1,12 @@
 (function () {
 
-  const isRoot   = !window.location.pathname.includes('/pages/');
-  const basePath = isRoot ? '' : '../';
-
   // check if we are in main folder
+  let isRoot = window.location.pathname.indexOf('/pages/') === -1;
+  let basePath = "";
+  if (isRoot === false) {
+    basePath = "../";
+  }
+
   // load home html
   fetch(basePath + 'pages/home.html')
     .then(response => response.text())
@@ -86,38 +89,34 @@
 
       if (cancelBtn) {
         cancelBtn.addEventListener("click", () => {
-          const confirmExit = document.createElement("div");
-          confirmExit.classList.add("confirm-exit");
-          confirmExit.innerHTML = `
-        <div class="confirm-exit-box">
-            <p>Are you sure you want to exit the Request Form?</p>
-            <p style="font-size:0.9em; color:#555; margin-top:8px;">
-            All information you entered will be deleted.
-            </p>
-            <div class="confirm-buttons">
-            <button id="exitYes">Yes</button>
-            <button id="exitNo">No</button>
-            </div>
-        </div>
-        `;
-          document.body.appendChild(confirmExit);
+          const confirmExitModal = document.getElementById("confirmExitModal");
+          if (confirmExitModal) {
+            confirmExitModal.style.display = "flex";
 
-          document.getElementById("exitYes").addEventListener("click", () => {
-            modal.style.display = "none";
-            resetBookingForm();
-            confirmExit.remove();
-          });
+            const exitYesBtn = document.getElementById("exitYes");
+            const exitNoBtn = document.getElementById("exitNo");
 
-          document.getElementById("exitNo").addEventListener("click", () => {
-            confirmExit.remove();
-          });
+            if (exitYesBtn) {
+              exitYesBtn.onclick = () => {
+                modal.style.display = "none";
+                resetBookingForm();
+                confirmExitModal.style.display = "none";
+              };
+            }
+
+            if (exitNoBtn) {
+              exitNoBtn.onclick = () => {
+                confirmExitModal.style.display = "none";
+              };
+            }
+          }
         });
       }
       // add dashes to contact number
       const contactNo = document.getElementById("contactNo");
       if (contactNo) {
-        contactNo.addEventListener("input", (e) => {
-          let value = e.target.value.replace(/\D/g, ""); // digits only
+        contactNo.addEventListener("input", function (e) {
+          let value = e.target.value.replace(/\D/g, "");
           if (value.length > 4) value = value.slice(0, 4) + "-" + value.slice(4);
           if (value.length > 8) value = value.slice(0, 8) + "-" + value.slice(8);
           e.target.value = value;
@@ -132,6 +131,55 @@
       }
 
       // custom address typed dropdown
+      const addressInput = document.getElementById("address");
+      const addressList = document.getElementById("address-list");
+      const addressArrow = document.getElementById("address-arrow");
+
+      if (addressInput && addressList && addressArrow) {
+        addressArrow.addEventListener("click", function (e) {
+          e.stopPropagation();
+          addressList.classList.toggle("show");
+          const items = addressList.querySelectorAll("li");
+          for (let i = 0; i < items.length; i++) {
+            items[i].style.display = "block";
+          }
+          addressInput.focus();
+        });
+
+        addressInput.addEventListener("input", function () {
+          addressList.classList.add("show");
+          let filter = addressInput.value.toUpperCase();
+          const items = addressList.querySelectorAll("li");
+          let hasVisible = false;
+          for (let i = 0; i < items.length; i++) {
+            let txtValue = items[i].textContent || items[i].innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              items[i].style.display = "block";
+              hasVisible = true;
+            } else {
+              items[i].style.display = "none";
+            }
+          }
+          if (hasVisible === false && filter !== "") {
+            addressList.classList.remove("show");
+          }
+        });
+
+        addressList.addEventListener("click", function (e) {
+          if (e.target.tagName === "LI") {
+            addressInput.value = e.target.textContent;
+            addressList.classList.remove("show");
+          }
+        });
+
+        document.addEventListener("click", function (e) {
+          if (e.target !== addressInput && e.target !== addressArrow && e.target !== addressList) {
+            addressList.classList.remove("show");
+          }
+        });
+      }
+
+      // names to uppercase
       function forceUppercase(field) {
         field.addEventListener("input", (e) => {
           e.target.value = e.target.value.replace(/[^A-Za-z]/g, "").toUpperCase();
@@ -164,7 +212,6 @@
           const contact = document.getElementById("contactNo").value.trim();
           const prefDate = document.getElementById("preferredDate").value;
 
-          const testsChosen = document.querySelectorAll(".test-item-total").length > 0;
 
           let valid = true;
           let errors = [];
@@ -192,7 +239,6 @@
           }
           if (age < 0 || age > 120) { valid = false; errors.push("Age invalid"); }
           if (!/^09\d{2}-\d{3}-\d{4}$/.test(contact)) { valid = false; errors.push("Contact number invalid"); }
-          if (!prefDate) { valid = false; errors.push("Preferred Date required"); }
           if (!prefDate) {
             valid = false;
             errors.push("Preferred Date required");
@@ -213,10 +259,13 @@
           if (!valid) {
             const errorPopup = document.getElementById("errorPopup");
             if (errorPopup) {
-              errorPopup.innerHTML = '<span class="close-error">&times;</span>' +
-                "<strong>Please fix the following errors before submitting:</strong><ul>" +
-                errors.map(err => `<li>${err}</li>`).join("") +
-                "</ul>";
+              let errorMsg = '<span class="close-error">&times;</span>';
+              errorMsg += "<strong>Please fix the following errors before submitting:</strong><ul>";
+              for (let i = 0; i < errors.length; i++) {
+                errorMsg += "<li>" + errors[i] + "</li>";
+              }
+              errorMsg += "</ul>";
+              errorPopup.innerHTML = errorMsg;
               errorPopup.style.display = "block";
 
               // attach dismiss button
@@ -233,47 +282,43 @@
             if (errorPopup) errorPopup.style.display = "none";
           }
 
-          const confirmSubmit = document.createElement("div");
-          confirmSubmit.classList.add("confirm-exit");
-          confirmSubmit.innerHTML = `
-                <div class="confirm-exit-box">
-                    <p>Are you sure you want to submit this request?</p>
-                    <p style="font-size:0.9em; color:#555; margin-top:8px;">
-                    All information you entered will be sent and cannot be edited.
-                    </p>
-                    <div class="confirm-buttons">
-                    <button id="submitYes">Yes</button>
-                    <button id="submitNo">No</button>
-                    </div>
-                </div>
-                `;
-          document.body.appendChild(confirmSubmit);
-
-          document.getElementById("submitYes").addEventListener("click", () => {
-            const selectedServices = [];
-            document.querySelectorAll(".test-item-total").forEach(item => {
-              const name = item.querySelector(".test-name-total").textContent.trim();
-              const price = item.querySelector(".test-price-total").textContent.trim();
-              selectedServices.push({ name, price });
-            });
           // confirm submission
+          const confirmSubmitModal = document.getElementById("confirmSubmitModal");
+          if (confirmSubmitModal) {
+            confirmSubmitModal.style.display = "flex";
+
+            const submitYesBtn = document.getElementById("submitYes");
+            const submitNoBtn = document.getElementById("submitNo");
+
+            if (submitYesBtn) {
+              submitYesBtn.onclick = () => {
                 // Proceed with submission
+                const selectedServices = [];
+                document.querySelectorAll(".test-item-total").forEach(item => {
+                  const name = item.querySelector(".test-name-total").textContent.trim();
+                  const price = item.querySelector(".test-price-total").textContent.trim();
+                  selectedServices.push({ name, price });
+                });
 
-            const totalAmount = document.querySelector(".total-price").textContent;
+                const totalAmount = document.querySelector(".total-price").textContent;
 
-            console.log("Submitting booking:", {
-              services: selectedServices,
-              total: totalAmount
-            });
+                console.log("Submitting booking:", {
+                  services: selectedServices,
+                  total: totalAmount
+                });
 
-            modal.style.display = "none";
-            resetBookingForm();
-            confirmSubmit.remove();
-          });
+                modal.style.display = "none";
+                resetBookingForm();
+                confirmSubmitModal.style.display = "none";
+              };
+            }
 
-          document.getElementById("submitNo").addEventListener("click", () => {
-            confirmSubmit.remove();
-          });
+            if (submitNoBtn) {
+              submitNoBtn.onclick = () => {
+                confirmSubmitModal.style.display = "none";
+              };
+            }
+          }
         });
       }
 
@@ -394,10 +439,6 @@
         if (!discountInfo) {
           discountInfo = document.createElement("div");
           discountInfo.classList.add("discount-info");
-          discountInfo.style.fontSize = "0.55em";
-          discountInfo.style.color = "#c00";
-          discountInfo.style.marginTop = "4px";
-          discountInfo.style.textAlign = "right";
           // Styling handled by CSS (.discount-info)
           const testListTotalEl = document.querySelector('.test-list-total');
           if (testListTotalEl) testListTotalEl.insertAdjacentElement("afterend", discountInfo);

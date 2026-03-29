@@ -1,6 +1,6 @@
 (function () {
-  const isRoot   = !window.location.pathname.includes('/pages/');
   // // check folder path
+  const isRoot = !window.location.pathname.includes('/pages/');
   const basePath = isRoot ? '' : '../';
 
   // load footer html
